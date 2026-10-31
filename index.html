@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黄鹤楼 · 游戏技术美术 / 材质 · 特效 · 风格化</title>
+<meta name="description" content="黄鹤楼 — 游戏技术美术（TA），数字媒体艺术与视觉传达背景。擅长 UE5 程序化材质、Niagara 特效与三渲二风格化渲染，独立主导多支二次元 3D 短片。">
+<meta name="theme-color" content="#08090B">
+<meta name="robots" content="noindex, nofollow">
+<!-- 发布后请把 og:image / og:url 换成完整网址，微信、飞书、B站等平台才会生成预览图 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="黄鹤楼 · 游戏技术美术 / 材质 · 特效 · 风格化">
+<meta property="og:description" content="2027 届 · 游戏技术美术（材质 / 特效 / 风格化）。UE5 程序化材质、Niagara 特效、三渲二渲染，13 件作品。常驻南昌 / 赣州，接受异地。">
+<meta property="og:image" content="assets/img/hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308090B'/%3E%3Cpath d='M6 6h8M6 6v8M26 26h-8M26 26v-8' stroke='%23CBFF3C' stroke-width='2' fill='none'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%23CBFF3C'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="assets/img/hero.webp">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- ══════════════ BOOT ══════════════ -->
+<div class="boot" id="boot" aria-hidden="true">
+  <div class="boot__inner">
+    <div class="boot__tag">PERSONNEL TERMINAL · v2.6</div>
+    <div class="boot__lines" id="bootLines"></div>
+    <div class="boot__bar"><i id="bootBar"></i></div>
+    <div class="boot__foot">
+      <span id="bootPct">000</span>
+      <span>LOADING ARCHIVE</span>
+    </div>
+  </div>
+  <div class="boot__wipe" id="bootWipe"></div>
+</div>
+
+<!-- ══════════════ CHROME ══════════════ -->
+<div class="grain" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+
+<div class="corners" aria-hidden="true">
+  <i class="c c--tl"></i><i class="c c--tr"></i><i class="c c--bl"></i><i class="c c--br"></i>
+</div>
+
+<aside class="rail rail--l" aria-hidden="true">
+  <span class="rail__txt">HUANG&nbsp;HELOU&nbsp;/&nbsp;TECHNICAL&nbsp;ARTIST&nbsp;/&nbsp;2026</span>
+  <span class="rail__line"></span>
+</aside>
+
+<aside class="rail rail--r" aria-hidden="true">
+  <div class="rail__track"><i id="scrollBar"></i></div>
+  <div class="rail__marks" id="railMarks"></div>
+</aside>
+
+<!-- ══════════════ NAV ══════════════ -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="返回顶部">
+    <span class="nav__mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3 3h7M3 3v7M21 21h-7M21 21v-7" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg>
+    </span>
+    <span class="nav__name">黄鹤楼<em>HELOU</em></span>
+  </a>
+
+  <nav class="nav__links" aria-label="主导航">
+    <a href="#works" data-sec="works"><i>01</i><span>作品</span></a>
+    <a href="#profile" data-sec="profile"><i>02</i><span>档案</span></a>
+    <a href="#experience" data-sec="experience"><i>03</i><span>履历</span></a>
+    <a href="#awards" data-sec="awards"><i>04</i><span>荣誉</span></a>
+    <a href="#contact" data-sec="contact"><i>05</i><span>联络</span></a>
+  </nav>
+
+  <div class="nav__status">
+    <span class="dot"></span>
+    <span>OPEN&nbsp;TO&nbsp;WORK</span>
+  </div>
+
+  <button class="nav__burger" id="burger" aria-label="打开菜单" aria-expanded="false">
+    <i></i><i></i>
+  </button>
+</header>
+
+<!-- ══════════════ MOBILE MENU ══════════════ -->
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <div class="mmenu__inner">
+    <a href="#works"><i>01</i>作品<span>WORKS</span></a>
+    <a href="#profile"><i>02</i>档案<span>PROFILE</span></a>
+    <a href="#experience"><i>03</i>履历<span>EXPERIENCE</span></a>
+    <a href="#awards"><i>04</i>荣誉<span>AWARDS</span></a>
+    <a href="#contact"><i>05</i>联络<span>CONTACT</span></a>
+  </div>
+  <div class="mmenu__foot">HUANG HELOU · TECHNICAL ARTIST · 2026</div>
+</div>
+
+<main id="top">
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="hero">
+  <div class="hero__media">
+    <img id="heroImg" src="assets/img/hero.webp" alt="超越神明的造物 — 雪原上的巨型结构，橙色电路光带贯穿建筑群" fetchpriority="high">
+  </div>
+  <div class="hero__scrim"></div>
+  <canvas class="hero__net" id="heroNet" aria-hidden="true"></canvas>
+
+  <div class="hero__inner">
+    <div class="hero__kicker">
+      <span class="tagline"><i></i>PERSONNEL FILE</span>
+      <span class="mono">ID / TA-2026·001</span>
+      <span class="hero__status"><i></i>OPEN TO WORK</span>
+    </div>
+
+    <h1 class="hero__name">
+      <span class="hero__cn">黄鹤楼</span>
+      <span class="hero__latin">HUANG&thinsp;HELOU</span>
+    </h1>
+
+    <div class="hero__rule"><i></i></div>
+
+    <p class="hero__role">游戏技术美术<span>/</span><em>GAME&nbsp;TECHNICAL&nbsp;ARTIST</em></p>
+
+    <p class="hero__meta">
+      <span>2027 届</span><i>·</i><span>寻找日常实习</span><i>·</i><span>常驻南昌 / 赣州</span><i>·</i><span>接受异地</span>
+    </p>
+
+    <p class="hero__lead">
+      以 Blender + Unreal Engine 5 构建风格化游戏视觉：程序化材质、Niagara 特效，
+      以及让画面可信的那一层光。
+    </p>
+
+    <div class="hero__stats">
+      <div class="hstat"><div class="hstat__n"><b data-count="80">0</b><i>万+</i></div><span>累计 B站播放</span></div>
+      <div class="hstat"><div class="hstat__n"><b data-count="14">0</b><i>K</i></div><span>B站粉丝</span></div>
+      <div class="hstat"><div class="hstat__n"><b data-count="4">0</b><i>支</i></div><span>独立 3D 短片</span></div>
+      <div class="hstat"><div class="hstat__n"><b data-count="1">0</b><i>款</i></div><span>Steam 上线项目</span></div>
+    </div>
+
+    <div class="hero__cta">
+      <a class="btn btn--solid" href="#works"><span>查看作品</span><em>01</em></a>
+      <a class="btn" href="#contact"><span>联系我</span><em>05</em></a>
+    </div>
+  </div>
+
+  <div class="hero__panel" aria-hidden="true">
+    <div class="hpanel">
+      <div class="hpanel__head"><span>SPEC</span><i></i><span>LIVE</span></div>
+      <dl>
+        <div><dt>ROLE</dt><dd>MATERIAL / VFX</dd></div>
+        <div><dt>STACK</dt><dd>UE5 · BLENDER</dd></div>
+        <div><dt>BASED</dt><dd>NANCHANG · CN</dd></div>
+        <div><dt>STATUS</dt><dd class="hl">AVAILABLE</dd></div>
+      </dl>
+      <div class="hpanel__spark"><canvas id="spark" width="240" height="44"></canvas></div>
+      <div class="hpanel__foot"><span id="hudClock">--:--:--</span><span>LOCAL</span></div>
+    </div>
+  </div>
+
+  <div class="hero__scroll"><span>SCROLL</span><i></i></div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>UE5</span><b>·</b><span>NIAGARA</span><b>·</b><span>BLENDER</span><b>·</b><span>GEOMETRY NODES</span><b>·</b><span>TOON SHADING</span><b>·</b><span>SUBSTANCE PAINTER</span><b>·</b><span>EMBERGEN</span><b>·</b><span>GAEA</span><b>·</b><span>MATERIAL FUNCTIONS</span><b>·</b><span>PARALLAX MAPPING</span><b>·</b>
+      <span>UE5</span><b>·</b><span>NIAGARA</span><b>·</b><span>BLENDER</span><b>·</b><span>GEOMETRY NODES</span><b>·</b><span>TOON SHADING</span><b>·</b><span>SUBSTANCE PAINTER</span><b>·</b><span>EMBERGEN</span><b>·</b><span>GAEA</span><b>·</b><span>MATERIAL FUNCTIONS</span><b>·</b><span>PARALLAX MAPPING</span><b>·</b>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 01 WORKS ══════════════ -->
+<section class="sec sec--works" id="works">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="sec-idx">01</span>
+      <h2 class="sec-title">作品<em>WORKS</em></h2>
+      <span class="sec-rule"><i></i></span>
+      <span class="sec-meta" id="worksCount">ARCHIVE / 013</span>
+    </header>
+
+    <!-- 主打作品 -->
+    <article class="feature reveal" data-work="w01">
+      <div class="feature__media">
+        <img src="assets/img/w01.webp" alt="超越神明的造物 — 雪原巨型结构" loading="lazy">
+        <video class="loop" data-src="assets/video/lp_w01.mp4" muted loop playsinline preload="none"></video>
+        <span class="feature__badge">FEATURED</span>
+        <span class="feature__scan"></span>
+      </div>
+      <div class="feature__info">
+        <div class="feature__idx">01 <i>/</i> 013</div>
+        <h3>超越神明的造物</h3>
+        <p class="feature__latin">THE CREATION BEYOND GODS</p>
+        <p class="feature__desc">
+          碧蓝档案 BOSS「盖布拉」3D 同人 CG。程序化机甲材质，几何节点构建暴风雪与烟雾，
+          Gaea 生成地形，EmberGen 制作 VDB 体积烟雾 —— 全流程独立完成。
+        </p>
+        <dl class="feature__spec">
+          <div><dt>年度</dt><dd>2026</dd></div>
+          <div><dt>片长</dt><dd>15s</dd></div>
+          <div><dt>B站播放</dt><dd>20万+</dd></div>
+          <div><dt>角色</dt><dd>独立制作</dd></div>
+        </dl>
+        <button class="btn btn--line" data-open="w01"><span>查看详情</span><em>↗</em></button>
+      </div>
+    </article>
+
+    <!-- 筛选 -->
+    <div class="filters reveal" id="filters" role="tablist" aria-label="作品分类">
+      <button class="fbtn is-on" data-cat="all" role="tab" aria-selected="true">全部<span>13</span></button>
+      <button class="fbtn" data-cat="vfx" role="tab" aria-selected="false">引擎特效<span>03</span></button>
+      <button class="fbtn" data-cat="stylize" role="tab" aria-selected="false">风格化渲染<span>03</span></button>
+      <button class="fbtn" data-cat="cg" role="tab" aria-selected="false">CG 短片<span>03</span></button>
+      <button class="fbtn" data-cat="scene" role="tab" aria-selected="false">场景壁纸<span>02</span></button>
+      <button class="fbtn" data-cat="char" role="tab" aria-selected="false">角色设计<span>02</span></button>
+    </div>
+
+    <div class="grid" id="worksGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════════ 02 PROFILE ══════════════ -->
+<section class="sec sec--profile" id="profile">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="sec-idx">02</span>
+      <h2 class="sec-title">档案<em>PROFILE</em></h2>
+      <span class="sec-rule"><i></i></span>
+      <span class="sec-meta">IDENTITY / 002</span>
+    </header>
+
+    <div class="prof">
+      <div class="prof__body">
+        <p class="lead reveal">
+          数字媒体艺术出身，<br>
+          把技术当作画面的工具。
+        </p>
+        <p class="txt reveal" style="--d:.05s">
+          我擅长在 UE5 与 Blender 之间来回切换 —— 用节点化程序材质定义表面的质感，用 Niagara 让它们动起来，
+          再用三渲二把这一切收束成统一的风格。独立主导多支二次元同人 3D 短片，累计 B站播放 80 万+；
+          作为 5 人常驻团队成员，参与 Steam 上线同人游戏《雨之残响 Echoes of the Rain》的材质与特效开发。
+        </p>
+        <p class="txt reveal" style="--d:.1s">
+          定位美术向 TA，侧重材质与特效表现。HLSL 能阅读，编程 AI 辅助 ——
+          不仅能把时间花在让一个材质「对味」上，也能把管线写得更聪明。
+        </p>
+
+        <div class="prof__facts reveal" style="--d:.15s">
+          <div><span>POSITION</span><b>游戏技术美术 / 美术向</b></div>
+          <div><span>SEEKING</span><b>2027 届 · 日常实习（可转正）</b></div>
+          <div><span>BASE</span><b>南昌 / 赣州 · 接受异地</b></div>
+          <div><span>EDUCATION</span><b>南昌职业大学 · 视觉传达（本科 2025–2027）</b><b class="sub">赣州职业技术学院 · 数字媒体艺术（专科 2022–2025）</b></div>
+        </div>
+      </div>
+
+      <div class="prof__chart reveal" style="--d:.1s">
+        <div class="chart">
+          <div class="chart__head"><span>CAPABILITY MATRIX</span><i></i></div>
+          <canvas id="radar" width="520" height="520" aria-label="能力雷达图"></canvas>
+          <ul class="chart__legend" id="radarLegend"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="subhead reveal">
+      <h3>能力<em>CAPABILITY</em></h3>
+      <span class="subhead__rule"><i></i></span>
+      <span class="subhead__meta">STACK / 004</span>
+    </div>
+
+    <div class="skills" id="skills"></div>
+
+    <p class="skills__note reveal">
+      <i>NOTE</i>
+      HLSL 能阅读、编程 AI 辅助（Python 基础）。定位美术向 TA，侧重材质与特效表现。
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════ 03 EXPERIENCE ══════════════ -->
+<section class="sec sec--exp" id="experience">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="sec-idx">03</span>
+      <h2 class="sec-title">履历<em>EXPERIENCE</em></h2>
+      <span class="sec-rule"><i></i></span>
+      <span class="sec-meta">TIMELINE / 004</span>
+    </header>
+
+    <ol class="tl" id="timeline"></ol>
+  </div>
+</section>
+
+<!-- ══════════════ 04 AWARDS ══════════════ -->
+<section class="sec sec--aw" id="awards">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="sec-idx">04</span>
+      <h2 class="sec-title">荣誉<em>AWARDS</em></h2>
+      <span class="sec-rule"><i></i></span>
+      <span class="sec-meta">RECORD / 004</span>
+    </header>
+
+    <ul class="aw" id="awardsList"></ul>
+  </div>
+</section>
+
+<!-- ══════════════ 05 CONTACT ══════════════ -->
+<section class="sec sec--contact" id="contact">
+  <canvas class="contact__net" id="ctaNet" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="sec-idx">05</span>
+      <h2 class="sec-title">联络<em>CONTACT</em></h2>
+      <span class="sec-rule"><i></i></span>
+      <span class="sec-meta">CHANNEL / 003</span>
+    </header>
+
+    <div class="cta">
+      <div class="cta__left">
+        <p class="cta__kicker"><i></i>AVAILABLE FOR WORK</p>
+        <h3 class="cta__big">有空<br>聊聊吗？</h3>
+        <p class="cta__sub">
+          目前在找工作 —— 游戏技术美术 / 材质 / 特效方向，实习可转正。
+          也欢迎任何关于作品、合作或技术细节的讨论。
+        </p>
+      </div>
+
+      <div class="cta__right">
+        <a class="mailrow" href="mailto:huanghelou19991231@163.com" data-mail>
+          <span class="mailrow__label">EMAIL</span>
+          <span class="mailrow__val" data-mail-text>huanghelou19991231@163.com</span>
+          <span class="mailrow__ico">↗</span>
+        </a>
+
+        <div class="cta__links">
+          <button type="button" class="cta__row" data-copy="HuangHeLou19991231">
+            <span>WECHAT</span><em data-copy-label>HuangHeLou19991231</em>
+          </button>
+          <a class="cta__row" href="#" data-bili target="_blank" rel="noopener">
+            <span>BILIBILI</span><em>主页 ↗</em>
+          </a>
+          <!-- 换好简历后：把 resume.docx 放回 assets/doc/，再把下面这个 span 改成
+               <a class="cta__row" href="assets/doc/resume.docx" download> 即可恢复下载 -->
+          <span class="cta__row is-off" aria-disabled="true">
+            <span>RÉSUMÉ</span><em>简历 · 待开放</em>
+          </span>
+        </div>
+
+        <a class="qrblock" href="#" data-qr target="_blank" rel="noopener" aria-label="扫描或点击进入 B站主页">
+          <span class="qrblock__code">
+            <img src="assets/img/qr-placeholder.svg" alt="B站主页二维码" width="108" height="108">
+            <i class="qrblock__scan" aria-hidden="true"></i>
+          </span>
+          <span class="qrblock__txt">
+            <b>BILIBILI</b>
+            <em>扫描 / 点击进入 B站主页</em>
+            <small>HUANG&nbsp;HELOU · VIDEO&nbsp;ARCHIVE</small>
+          </span>
+        </a>
+
+      </div>
+    </div>
+
+    <footer class="foot">
+      <span>© 2026 黄鹤楼 HUANG HELOU</span>
+      <span class="foot__mid">GAME TECHNICAL ARTIST · MATERIAL / VFX / STYLIZED</span>
+      <span>SITE BUILT BY HAND</span>
+    </footer>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════ MODAL ══════════════ -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal__scrim" data-close></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="modal__bar">
+      <span class="m-id">—</span>
+      <span class="m-cat">—</span>
+      <span class="modal__spacer"></span>
+      <button class="modal__nav" data-nav="-1" aria-label="上一个">←</button>
+      <button class="modal__nav" data-nav="1" aria-label="下一个">→</button>
+      <button class="modal__close" data-close aria-label="关闭">✕</button>
+    </div>
+    <div class="modal__media" id="mMedia"></div>
+    <div class="modal__body">
+      <div class="modal__title">
+        <h3 id="mTitle">—</h3>
+        <p id="mLatin">—</p>
+      </div>
+      <p class="modal__desc" id="mDesc"></p>
+      <dl class="modal__spec" id="mSpec"></dl>
+      <div class="modal__tags" id="mTags"></div>
+    </div>
+  </div>
+</div>
+
+<!-- cursor -->
+<div class="cur" id="cur" aria-hidden="true">
+  <span class="cur__dot"></span>
+  <span class="cur__ring"></span>
+  <span class="cur__lbl" id="curLbl"></span>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
